@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Testing: Keyboard</h1>
+    <div id="box" style="background-color: navajowhite; width: 250px; height: 250px; overflow: hidden">
+      <ul></ul>
+    </div>
+
+    <script type="module">
+      import '../umd/keyboard.dev.js'
+
+      const box = document.getElementById('box')
+      const ul = box.firstElementChild
+
+      const logger = (...msg) => {
+        if (!msg) return
+
+        console.log(...msg)
+
+        const li = document.createElement('li')
+        li.innerText = msg
+        // ul.firstElementChild.insertBefore
+        ul.insertBefore(li, ul.firstElementChild)
+      }
+
+      logger('Keyboard VERSION: ', Keyboard.VERSION)
+
+      // check https://keycode.info/ (event.code)
+      const keyboard = new Keyboard()
+
+      // keyboard.watch.down(keyCode => {
+      //   logger('down', keyCode)
+      // })
+
+      // keyboard.watch.up(keyCode => {
+      //   logger('up', keyCode)
+      // })
+
+      keyboard.once.down('KeyE KeyR', keyCode => {
+        logger(`${keyCode} is down.`)
+      })
+
+      keyboard.on.down('KeyQ', keyCode => {
+        logger(`${keyCode} is down.`)
+      })
+
+      keyboard.on.down('KeyL KeyK Space', keyCode => {
+        logger(`${keyCode} is down.`)
+      })
+
+      keyboard.on.up('KeyL', () => {
+        logger('KeyL is up.')
+      })
+
+      // setTimeout(() => {
+      //   keyboard.destroy()
+      // }, 5000)
+
+      // keyboard.once.up('KeyL', () => {
+      //   logger('LL UP ONCE')
+      // })
+
+      // setInterval(() => {
+      //   logger(keyboard.key('KeyW').isDown)
+      // }, 1000)
+    </script>
+  </body>
+</html>

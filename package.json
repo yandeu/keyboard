@@ -1,0 +1,46 @@
+{
+  "name": "@yandeu/keyboard",
+  "version": "0.0.1",
+  "description": "Handling of keyboard events. (Inspired by keyboardjs)",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "author": "Yannick Deubel (https://github.com/yandeu)",
+  "license": "MIT",
+  "homepage": "https://github.com/yandeu/keyboard#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yandeu/keyboard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yandeu/keyboard/issues"
+  },
+  "scripts": {
+    "prepareRelease": "npm i && npm run build",
+    "start": "npm run dev",
+    "build": "npm run prune && npm-run-all build:*",
+    "build:version": "extract version /src/version.ts",
+    "build:tsc": "tsc --project tsconfig.json",
+    "build:webpack": "webpack --config webpack.prod.cjs",
+    "dev": "npm run prune && npm-run-all --parallel dev:*",
+    "dev:webpack": "webpack --config webpack.dev.cjs --watch",
+    "dev:server": "live-server --port=8086 --open=dev/index.html",
+    "prune": "rimraf lib cjs esm umd",
+    "prepublishOnly": "npm run prune && npm run build"
+  },
+  "dependencies": {
+    "@yandeu/events": "0.0.5"
+  },
+  "devDependencies": {
+    "@yandeu/extract": "0.0.1",
+    "live-server": "^1.2.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "ts-loader": "^8.0.17",
+    "typescript": "^4.2.2",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
+  },
+  "funding": {
+    "url": "https://github.com/sponsors/yandeu"
+  }
+}
