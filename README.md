@@ -20,9 +20,66 @@ https://unpkg.com/@yandeu/keyboard/umd/keyboard.min.js
 ```ts
 // print the current version
 console.log('Keyboard VERSION: ', Keyboard.VERSION)
-```
 
-todo
+// instantiate
+const keyboard = new Keyboard()
+
+// watch all keys down
+keyboard.watch.down(keyCode => {
+  console.log('down', keyCode)
+})
+
+// watch all keys up
+keyboard.watch.up(keyCode => {
+  console.log('up', keyCode)
+})
+
+// listen for Q down
+keyboard.on.down('KeyQ', keyCode => {
+  console.log(`${keyCode} is down.`)
+})
+
+// listen for L, K or Space down
+keyboard.on.down('KeyL KeyK Space', keyCode => {
+  console.log(`${keyCode} is down.`)
+
+  const L = keyboard.key('KeyL').isDown
+  const K = keyboard.key('KeyK').isDown
+  const Space = keyboard.key('Space').isDown
+
+  if (L && K && Space) {
+    console.log('All 3 keys are down!')
+  }
+})
+
+// listen for L up
+keyboard.on.up('KeyL', () => {
+  console.log('KeyL is up.')
+})
+
+// listen for key E or R down (once)
+keyboard.once.down('KeyE KeyR', keyCode => {
+  console.log(`${keyCode} is down.`)
+})
+
+// check if W is down
+keyboard.key('KeyW').isDown
+
+// check if U is up
+keyboard.key('KeyU').isDown
+
+// check if paused
+keyboard.isPaused
+
+// pause all events (except .once())
+keyboard.pause()
+
+// resume all events
+keyboard.resume()
+
+// destroy all events once you are done
+keyboard.destroy()
+```
 
 ## KeyCode
 
@@ -37,9 +94,7 @@ Why? Read this:
 
 ## keycode&#46;info
 
-Check [keycode.info (event.code)](https://keycode.info/) to get usefull information about your inputs.
-
-todo
+Check [keycode.info (event.code)](https://keycode.info/) to get useful information about your inputs.
 
 ## License
 
