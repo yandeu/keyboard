@@ -3,3 +3,4 @@ esm
 cjs
 umd
 node_modules
+package-lock.json
