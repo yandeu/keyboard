@@ -1,6 +1,6 @@
 # ⌨️ Keyboard
 
-Handling of keyboard events.
+Handling of keyboard events.  
 (_Inspired by [keyboardjs](https://www.npmjs.com/package/keyboardjs)_)
 
 ## Installation
