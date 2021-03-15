@@ -96,6 +96,10 @@ Why? Read this:
 
 Check [keycode.info (event.code)](https://keycode.info/) to get useful information about your inputs.
 
+## Questions?
+
+Join the [enable3d discussions](https://github.com/enable3d/enable3d/discussions)!
+
 ## License
 
 [MIT](LICENSE)
